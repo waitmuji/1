@@ -1,0 +1,32 @@
+import cv2
+import numpy as np
+
+# 读取输入的照片
+input_image = cv2.imread('input_photo.jpg')
+
+# 缩小照片尺寸，模拟低模效果
+scaled_image = cv2.resize(input_image, None, fx=0.1, fy=0.1, interpolation=cv2.INTER_NEAREST)
+
+# 保存处理后的低模照片
+cv2.imwrite('processed_photo.jpg', scaled_image)
+
+print('低模照片已生成并保存为processed_photo.jpg')
+echo "# Low Poly Art" >> README.md  # 创建README.md文件并写入内容
+
+git init  # 初始化Git仓库
+
+git add README.md  # 将README.md文件添加到Git的暂存区
+
+git commit -m "Initial commit"  # 提交暂存区的更改并附上提交信息
+
+git branch -M main  # 将当前分支重命名为main
+
+git remote add origin https://github.com/waitmuji/1.git  # 添加名为origin的远程仓库
+
+# 执行图像处理代码，生成低模照片并将其添加到Git的暂存区
+python process_photo.py
+git add processed_photo.jpg
+
+git commit -m "Add processed low poly photo"  # 提交处理后的照片并附上提交信息
+
+git push -u origin main  # 将更改推送到GitHub仓库的main分支
